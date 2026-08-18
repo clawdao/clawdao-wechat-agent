@@ -1,0 +1,4 @@
+- [x] Step 1: ✅ Markdown 文章已写
+- [x] Step 2: ✅ 封面生成
+- [x] Step 3: ✅ 插图已就绪
+- [x] Step 4: ⚠️ IP 未在白名单，需处理

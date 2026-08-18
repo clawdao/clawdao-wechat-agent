@@ -1,0 +1,33 @@
+{
+  "api": {
+    "base_url": "http://127.0.0.1:15721/v1",
+    "chat_model": "deepseek-v4-flash",
+    "image_model": "dall-e-3",
+    "api_key": "YOUR_API_KEY"
+  },
+  "wechat": {
+    "appid": "wxc2784604a23fd0c6",
+    "appsecret": "YOUR_APPSECRET",
+    "token_url": "YOUR_TOKEN_URL",
+    "draft_url": "https://api.weixin.qq.com/cgi-bin/draft/add"
+  },
+  "cover": {
+    "width": 900,
+    "height": 383,
+    "bg_color": "#1a1a2e",
+    "text_color": "#ffffff",
+    "accent_color": "#e94560"
+  },
+  "output": {
+    "dir": "output",
+    "article_prefix": "article",
+    "cover_prefix": "cover"
+  },
+  "seedream": {
+    "access_key": "YOUR_ACCESS_KEY",
+    "secret_key": "YOUR_SECRET_KEY",
+    "endpoint": "https://visual.volcengineapi.com",
+    "model": "high_aes_general_v30l_zt2i",
+    "enabled": true
+  }
+}

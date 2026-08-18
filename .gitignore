@@ -1,0 +1,22 @@
+# ── 密钥与环境变量（严禁入库） ──
+config.json
+config.local.json
+.env
+.env.*
+*.local
+credentials.json
+
+# ── Python ──
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ── 备份/临时文件 ──
+*.bak
+*.tmp
+
+# ── 产物 ──
+output/*.png
+output/*.md
+images/
