@@ -46,15 +46,50 @@ python3 main.py "AI时代如何提升个人效率" --style 轻松专业
 
 ```
 .
-├── main.py                    # 主入口：一键 文章+封面+配图+发布
-├── article_generator.py       # AI 文章生成（GEO 优化）
-├── cover_generator.py         # 封面图生成（基础版 / Deluxe / 定制版）
-├── image_generator_enhanced.py# 增强图像生成
-├── wechat_publisher.py        # 微信草稿箱发布
-├── config.py / config.json    # 配置（config.json 已忽略入库）
-├── config.example.json        # 脱敏配置模板
-└── docs/                      # 选题规划文档
+├── main.py                  🚀 CLI 入口（一键主入口）
+├── config.py                ⚙️ 配置加载
+│
+├── core/                    📚 核心流程
+│   ├── article.py           ✍️ AI 文案生成
+│   └── publisher.py         📤 微信草稿箱发布
+│
+├── covers/                  🖼️ 封面图生成
+│   ├── base.py              基础版
+│   ├── deluxe.py            Deluxe 版（径向+线性渐变）
+│   ├── lite.py              减少依赖版
+│   ├── themed.py            主题版
+│   ├── enhanced.py          增强版（main 默认）
+│   ├── banner.py            标题横幅
+│   ├── helper.py            辅助函数
+│   └── regen.py             图片重新生成
+│
+├── publish/                 📤 发布工具
+│   ├── smart.py             主用（智能同步品牌头图）
+│   ├── single.py            单篇
+│   ├── batch.py             批量
+│   ├── final.py             最终版
+│   ├── v2.py / v3.py        旧版本（保留）
+│   ├── both.py              同时发布两篇
+│   └── republish.py         重发布 OPD
+│
+├── tools/                   🔧 工具/集成
+│   ├── seedream.py          火山方舟 Seedream 图像
+│   ├── opd.py               OPD 业务文章
+│   ├── fix.py               修复工具
+│   ├── patch_doc.py         文档补丁
+│   └── volcengine_sign.py   签名测试
+│
+├── tests/                   🧪 单元测试（unittest）
+│   ├── test_config.py
+│   ├── test_core_article.py
+│   ├── test_core_publisher.py
+│   └── test_covers.py
+│
+└── docs/                    📖 文档
+    └── REFACTORING-PLAN.md  重构计划
 ```
+
+> 迁移记录：25 个脚本从根目录迁移到上述模块，删除 .bak 备份；中文名改为英文；`main.py` 依赖已全部更新到新模块路径。运行测试：`.venv/bin/python3 -m unittest discover -s tests -p 'test_*.py'`
 
 ## ⚖️ 许可
 

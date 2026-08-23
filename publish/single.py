@@ -4,7 +4,7 @@
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from wechat_publisher import WeChatPublisher
+from core.publisher import WeChatPublisher
 from pathlib import Path
 
 ART_PATH = Path(__file__).parent / "output" / "05-从用软件到长软件_配图版.md"

@@ -3,9 +3,9 @@ import json
 import os
 from openai import OpenAI
 from config import get_api_config
-from article_generator import extract_title
-from cover_generator import generate_cover
-from wechat_publisher import WeChatPublisher
+from core.article import extract_title
+from covers.base import generate_cover
+from core.publisher import WeChatPublisher
 
 api_cfg = get_api_config()
 client = OpenAI(base_url=api_cfg["base_url"], api_key=api_cfg.get("api_key", "not-needed"))

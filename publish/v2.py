@@ -7,7 +7,7 @@
 """
 import sys, os, re, time, json, requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from wechat_publisher import WeChatPublisher
+from core.publisher import WeChatPublisher
 
 PUBLISHER = WeChatPublisher()
 BASE = os.path.dirname(os.path.abspath(__file__))

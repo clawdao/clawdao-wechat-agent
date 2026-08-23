@@ -1,9 +1,9 @@
 """重新发布三篇OPD文章 - 精排版"""
 import os, sys, json, re, time
 sys.path.insert(0, '.')
-from wechat_publisher import WeChatPublisher
-from cover_generator import generate_cover
-from article_generator import extract_title
+from core.publisher import WeChatPublisher
+from covers.base import generate_cover
+from core.article import extract_title
 
 ARTICLES = [
     {"file": "output/article_opd_01.md"},

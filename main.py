@@ -11,9 +11,9 @@ import re
 import sys
 import argparse
 from pathlib import Path
-from article_generator import generate_article, extract_title
-from image_generator_enhanced import generate_cover_enhanced, generate_inline_image
-from wechat_publisher import WeChatPublisher
+from core.article import generate_article, extract_title
+from covers.enhanced import generate_cover_enhanced, generate_inline_image
+from core.publisher import WeChatPublisher
 
 
 def clean_title(title: str) -> str:

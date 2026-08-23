@@ -1,7 +1,7 @@
 """批量发布三篇觉知岛公众号文章到微信草稿箱"""
 import sys, os, re, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from wechat_publisher import WeChatPublisher
+from core.publisher import WeChatPublisher
 
 PUBLISHER = WeChatPublisher()
 

@@ -11,9 +11,9 @@
 """
 import re, sys, os, argparse, shutil
 from pathlib import Path
-from article_generator import generate_article, extract_title
-from cover_generator import generate_cover  # 回退方案
-from wechat_publisher import WeChatPublisher
+from core.article import generate_article, extract_title
+from covers.base import generate_cover  # 回退方案
+from core.publisher import WeChatPublisher
 
 BASE = Path(__file__).parent
 OUT = BASE / 'output'
