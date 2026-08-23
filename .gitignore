@@ -2,9 +2,11 @@
 config.json
 config.local.json
 .env
-.env.*
+.env.local
+.env.*.local
 *.local
 credentials.json
+# 注：.env.example 是脱敏模板，允许入库（白名单例外）
 
 # ── Python ──
 __pycache__/
