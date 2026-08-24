@@ -57,7 +57,12 @@ def get_api_config():
 
 
 def get_wechat_config():
-    return load_config()["wechat"]
+    """微信公众平台配置（同时支持 secret / appsecret 两种字段名）"""
+    cfg = load_config()
+    w = cfg["wechat"]
+    # 兼容性：优先 secret（标准名），回退 appsecret
+    w["secret"] = w.get("secret") or w.get("appsecret")
+    return w
 
 
 def get_cover_config():
