@@ -1,6 +1,15 @@
 """AI 文章生成模块 - 调用本地 DeepSeek API 生成公众号文章（结构化版）"""
+import re
 from openai import OpenAI
 from config import get_api_config
+
+
+_THINK_BLOCK_RE = re.compile(r"<think>.*?</think>\s*", re.DOTALL)
+
+
+def _strip_think_blocks(text: str) -> str:
+    """移除 MiniMax-M3 等模型输出的 <think>...</think> 思考块（污染标题/正文提取）"""
+    return _THINK_BLOCK_RE.sub("", text).lstrip()
 
 
 def generate_article(topic: str, style: str = "轻松专业") -> str:
@@ -65,12 +74,18 @@ def generate_article(topic: str, style: str = "轻松专业") -> str:
         temperature=0.7,
         max_tokens=6000,
     )
-    return response.choices[0].message.content
+    raw = response.choices[0].message.content or ""
+    return _strip_think_blocks(raw)
 
 
 def extract_title(article: str) -> str:
+    # 跳过 <think> 块（已在生成时 strip，但保险起见再过滤一次）
+    article = _strip_think_blocks(article)
     for line in article.split("\n"):
         line = line.strip()
+        # 接受 # 开头（不能 ## 或更深的标题）
         if line.startswith("# ") and not line.startswith("## "):
-            return line.replace("# ", "").strip()
+            t = line[2:].strip()
+            if t and "候选" not in t and "：" not in t[:2]:
+                return t
     return "无标题"

@@ -166,51 +166,79 @@ def main():
 
         tags = get_topic_tags(args.topic or topic)
 
-        # 尝试使用 Seedream
         inline_paths = []
+        # 优先级：minimax_image (MiniMax-M3) > seedream > 本地 PIL
+        provider_used = None
         try:
-            from config import get_seedream_config
-            scfg = get_seedream_config()
-            use_seedream = args.use_seedream or scfg.get("enabled", False)
-            if use_seedream:
-                print("  🔮 使用 Seedream AI 生成独特图像...")
-                from seedream_generator import SeedreamGenerator
-                sg = SeedreamGenerator(scfg)
-                if sg.enabled:
+            from config import get_minimax_image_config, get_image_provider
+            provider, _pcfg = get_image_provider()
+            if provider == "minimax_image" and not args.use_seedream:
+                print("  🦞 使用 MiniMax image-01 生成独特图像（直连 Minimax）...")
+                from tools.minimax_image import MinimaxImage
+                mi = MinimaxImage()
+                if mi.enabled:
+                    provider_used = "minimax_image"
                     # 1. 生成封面图
+                    cover_prompt = f"公众号封面图，主题：{title}，现代科技风格，觉知岛龙虾岛品牌，深紫蓝渐变 #1a1a2e，#e94560 品牌色，高品质"
                     print("  🖼️ 生成封面图...")
-                    cover_path = sg.generate_cover(title, args.topic, tags)
-
-                    # 2. 同步品牌头图（从知识库）
-                    from publish_smart import sync_brand_header
-                    sync_brand_header()
-
-                    # 3. 从文章提取实际内容生成配图
+                    cover_path = mi.generate(cover_prompt, "outputs/cover.png", 1024, 1024)
+                    # 2. 从文章提取内容生成 3 张配图
                     steps, concepts, quotes = extract_article_content(article)
                     style_list = ["steps", "concept", "quote"]
-
                     for i, style in enumerate(style_list):
                         if style == "steps" and steps:
                             sub_title = " → ".join(steps[:3])[:30]
-                        elif style == "concept":
-                            # 组合概念词
-                            if concepts:
-                                sub_title = " · ".join(concepts[:3])[:30]
-                            else:
-                                sub_title = f"{title[:12]}概念解析"
+                        elif style == "concept" and concepts:
+                            sub_title = " · ".join(concepts[:3])[:30]
+                        elif style == "quote" and quotes:
+                            sub_title = quotes[0][:30]
                         else:
-                            sub_title = quotes[0][:30] if quotes else f"{title[:12]}核心观点"
+                            sub_title = f"{title[:12]} - {style}"
                         if not args.no_images:
                             print(f"  🎨 生成配图 {i+1}/3...")
-                            ip = sg.generate_inline_image(sub_title or f"{topic[:15]}-{style}", style, args.topic,
-                                                           width=640, height=400)
-                            inline_paths.append(ip)
+                            inline_p = f"公众号配图，主题：{title}，{sub_title}，觉知岛龙虾岛品牌，现代科技感，高品质"
+                            ip = mi.generate(inline_p, f"outputs/inline_{i+1}.png", 1024, 1024)
+                            if ip:
+                                inline_paths.append(ip)
         except Exception as e:
-            print(f"  ⚠️ 生成失败: {e}")
+            print(f"  ⚠️ minimax_image 失败: {e}")
 
-        # 如果 Seedream 不可用或无配图生成成功，回退 PIL
+        # 降级 1: Seedream（仅当 --use-seedream 强制或 minimax_image 不可用）
+        if not provider_used and (args.use_seedream or not inline_paths and not cover_path):
+            try:
+                from config import get_seedream_config
+                scfg = get_seedream_config()
+                use_seedream = args.use_seedream or scfg.get("enabled", False)
+                if use_seedream:
+                    print("  🔮 使用 Seedream AI 生成独特图像（火山方舟）...")
+                    from seedream_generator import SeedreamGenerator
+                    sg = SeedreamGenerator(scfg)
+                    if sg.enabled:
+                        provider_used = "seedream"
+                        print("  🖼️ 生成封面图...")
+                        cover_path = sg.generate_cover(title, args.topic, tags)
+                        from publish_smart import sync_brand_header
+                        sync_brand_header()
+                        steps, concepts, quotes = extract_article_content(article)
+                        style_list = ["steps", "concept", "quote"]
+                        for i, style in enumerate(style_list):
+                            if style == "steps" and steps:
+                                sub_title = " → ".join(steps[:3])[:30]
+                            elif style == "concept":
+                                sub_title = " · ".join(concepts[:3])[:30] if concepts else f"{title[:12]}概念解析"
+                            else:
+                                sub_title = quotes[0][:30] if quotes else f"{title[:12]}核心观点"
+                            if not args.no_images:
+                                print(f"  🎨 生成配图 {i+1}/3...")
+                                ip = sg.generate_inline_image(sub_title or f"{topic[:15]}-{style}", style, args.topic,
+                                                               width=640, height=400)
+                                inline_paths.append(ip)
+            except Exception as e:
+                print(f"  ⚠️ Seedream 失败: {e}")
+
+        # 降级 2: 本地 PIL（始终兜底）
         if cover_path is None and not args.no_cover:
-            print("  🖼️ 使用 PIL 生成封面...")
+            print("  🖼️ 使用 PIL 本地生成封面...")
             cover_path = generate_cover_enhanced(title, args.topic, tags)
 
         if not inline_paths and not args.no_images and not args.no_cover:
@@ -230,6 +258,8 @@ def main():
                 inline_paths.append(ip)
 
         if not args.no_images and inline_paths:
+            from pathlib import Path as _P
+            inline_paths = [_P(p) if not hasattr(p, "name") else p for p in inline_paths]
             article = insert_images(article, inline_paths)
             print(f"✅ 已向文章中插入 {len(inline_paths)} 张配图")
 
