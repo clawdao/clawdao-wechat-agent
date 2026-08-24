@@ -95,7 +95,8 @@ def insert_images(article: str, inline_paths: list) -> str:
     lines = article.split("\n")
 
     for idx, ip in enumerate(inline_paths[:3]):
-        inline_rel = ip.name
+        # 图片位于 outputs/，文章在 output/，所以相对路径是 ../outputs/<name>
+        inline_rel = f"../outputs/{ip.name}" if "outputs" in str(ip) else ip.name
         # 使用有意义的内容作为alt
         alt_texts = ["步骤流程示意", "核心概念解析", "金句观点"]
         inline_md = f"\n![{alt_texts[idx] if idx < len(alt_texts) else '配图'}](./{inline_rel})\n"

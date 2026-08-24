@@ -260,21 +260,24 @@ class WeChatPublisher:
                     import os
                     # 支持 ./xxx.png 或 output/xxx.png 两种路径
                     if path.startswith("./"):
-                        # 从当前工作目录或output目录寻找
-                        script_dir = os.path.dirname(os.path.abspath(__file__))
+                        # 从当前工作目录或 output 目录寻找
+                        script_dir = os.path.dirname(os.path.abspath(__file__))  # core/
+                        project_dir = os.path.dirname(script_dir)               # 项目根
                         cwd_path = os.path.join(os.getcwd(), path[2:])
-                        # 优先检查项目output目录（实际文件所在位置）
-                        out_path = os.path.join(script_dir, "output", path[2:])
-                        # 也检查旧路径作为备用
+                        # 优先检查项目 outputs 目录（实际文件所在位置）
+                        out_path = os.path.join(project_dir, "outputs", path[2:])
+                        # 也检查项目 output 目录作为备用
+                        legacy_out = os.path.join(project_dir, "output", path[2:])
+                        # 也检查 script_dir/output 作为兜底（旧版兼容）
+                        script_out = os.path.join(script_dir, "output", path[2:])
+                        # 也检查原始位置
                         old_path = f"/Users/imfly/Documents/公众号/output/{path[2:]}"
-                        if os.path.exists(out_path):
-                            full_path = out_path
-                        elif os.path.exists(old_path):
-                            full_path = old_path
-                        elif os.path.exists(cwd_path):
-                            full_path = cwd_path
+                        for candidate in (out_path, legacy_out, script_out, cwd_path, old_path):
+                            if os.path.exists(candidate):
+                                full_path = candidate
+                                break
                         else:
-                            full_path = out_path
+                            full_path = out_path  # 最后尝试，让 _upload_image 报错提示
                     elif path.startswith("output/"):
                         script_dir = os.path.dirname(os.path.abspath(__file__))
                         full_path = os.path.join(script_dir, path)
