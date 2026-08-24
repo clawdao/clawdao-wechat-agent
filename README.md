@@ -40,8 +40,6 @@ python3 main.py "AI时代如何提升个人效率" --style 轻松专业
 | `cover` | `width` / `height` / 配色 | 封面尺寸与主题色 |
 | `output` | `dir` / 前缀 | 产物输出目录 |
 
-> 🔐 安全提示：`config.json` 含真实密钥，**不要**提交到 Git。模板见 `config.example.json`。
-
 ## 📁 目录结构
 
 ```
@@ -89,8 +87,7 @@ python3 main.py "AI时代如何提升个人效率" --style 轻松专业
     └── REFACTORING-PLAN.md  重构计划
 ```
 
-> 迁移记录：25 个脚本从根目录迁移到上述模块，删除 .bak 备份；中文名改为英文；`main.py` 依赖已全部更新到新模块路径。运行测试：`.venv/bin/python3 -m unittest discover -s tests -p 'test_*.py'`
 
 ## ⚖️ 许可
 
-MIT
+Apache-2.0
