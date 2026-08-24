@@ -19,7 +19,7 @@ BASE = Path(__file__).parent
 OUT = BASE / 'output'
 
 # Obsidian 知识库路径
-OBSIDIAN_KNOWLEDGE_BASE = Path('/Users/imfly/Documents/13-运营知识库/公众号工厂')
+OBSIDIAN_KNOWLEDGE_BASE = Path('/Users/imfly/Documents/13-运营知识库/公众号自动发布智能体')
 OBSIDIAN_BRAND_HEADER = OBSIDIAN_KNOWLEDGE_BASE / 'output' / 'brand_header.png'
 
 

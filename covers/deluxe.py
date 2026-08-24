@@ -272,7 +272,7 @@ def generate_deluxe_cover(title_str, topic=""):
     # ===== 降采样（2x → 1x）=====
     final = img.resize((W, H), Image.LANCZOS)
     
-    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号工厂/output")
+    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
     out_dir.mkdir(parents=True, exist_ok=True)
     
     safe_name = "".join(c if c.isalnum() or c in "-_" else "_" for c in title_str[:20])
@@ -353,7 +353,7 @@ def generate_inline_concept(title, concept_items=None):
     draw.text((W // 2 * s - 50 * s, (H - 30) * s), "依赖的三大陷阱", fill=(*PALETTE["gold_dim"], 120), font=ft_sub)
     
     final = img.resize((W, H), Image.LANCZOS)
-    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号工厂/output")
+    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
     path = out_dir / "inline_三大陷阱_concept.png"
     final.convert("RGB").save(str(path), "PNG", optimize=True)
     print(f"✅ 概念插图: {path}")
@@ -414,7 +414,7 @@ def generate_inline_steps(title, step_items=None):
                          fill=(*PALETTE["gold_dim"], 40))
     
     final = img.resize((W, H), Image.LANCZOS)
-    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号工厂/output")
+    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
     path = out_dir / "inline_三步法_steps.png"
     final.convert("RGB").save(str(path), "PNG", optimize=True)
     print(f"✅ 步骤插图: {path}")
@@ -455,7 +455,7 @@ def generate_inline_quote(quote_text):
     draw.text((W // 2 * s - 35 * s, (H - 30) * s), f"—— {BRAND}", fill=(*PALETTE["gold_dim"], 100), font=ft_brand)
     
     final = img.resize((W, H), Image.LANCZOS)
-    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号工厂/output")
+    out_dir = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
     path = out_dir / "inline_金句_quote.png"
     final.convert("RGB").save(str(path), "PNG", optimize=True)
     print(f"✅ 金句插图: {path}")

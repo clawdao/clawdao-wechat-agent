@@ -1,4 +1,4 @@
-# clawdao-wechat-factory · 公众号工厂
+# clawdao-wechat-agent · 公众号自动发布智能体
 
 > 公众号内容自动化生产流水线：**AI 撰写文章（GEO 优化）→ 精美封面/配图 → 一键发布微信草稿箱**。
 

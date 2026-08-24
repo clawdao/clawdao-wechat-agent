@@ -27,7 +27,7 @@ random.seed(42)
 SCALE = 4  # 4x 超采样，极致抗锯齿
 
 # ===== 输出目录 =====
-OUTPUT_DIR = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号工厂/output")
+OUTPUT_DIR = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
 
 # ===== 品牌常量 =====
 BRAND = "觉知岛"
