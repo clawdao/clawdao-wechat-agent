@@ -13,7 +13,7 @@ old_header = """# 公众号自动发布智能体 — 使用文档
 
 ```bash
 # 激活虚拟环境
-cd /Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体
+cd .
 source .venv/bin/activate
 
 # 一键生成文章 + 封面 + 配图 + 发布
@@ -33,7 +33,7 @@ new_header = """# 公众号自动发布智能体 — 使用文档
 
 ```bash
 # 1. 激活环境
-cd /Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体
+cd .
 source .venv/bin/activate
 
 # 2. 从知识库大纲生成并发布（推荐）
