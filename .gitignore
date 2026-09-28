@@ -21,5 +21,7 @@ venv/
 # ── 产物 ──
 output/*.png
 output/*.md
+output/*.html
+output/inline_*/
 outputs
 images/

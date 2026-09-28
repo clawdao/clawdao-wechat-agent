@@ -7,7 +7,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 CLAWDAO_AUTH_PATH = Path.home() / ".clawdao" / "auth.json"
 
 
-def _load_clawdao_key(provider: str) -> str | None:
+def _load_clawdao_key(provider: str):
     """从 ~/.clawdao/auth.json 加载指定 provider 的 key（如 minimax-cn）"""
     if not CLAWDAO_AUTH_PATH.exists():
         return None
@@ -22,7 +22,7 @@ def _load_clawdao_key(provider: str) -> str | None:
     return None
 
 
-def _resolve_api_key(cfg_section: dict, provider: str = "minimax-cn") -> str:
+def _resolve_api_key(cfg_section: dict, provider: str = "minimax-cn"):
     """解析 api_key 字段：
     - 如果是 'auto-from-auth-json'，从 ~/.clawdao/auth.json 取
     - 否则直接使用字面值
