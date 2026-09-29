@@ -4,7 +4,7 @@ AI深度学堂 - 公众号封面生成器
 - 文章封面 900×500（推送正文大图，"一图二用"载体）
 
 品牌色：深空紫蓝 + 鎏金 + 电蓝（Codex/AI 感）
-核心产品：觉知岛 SaaS / Clawdao 龙虾岛 / DDN 区块链 / Codex 训练营
+核心产品：亿检链 SaaS / Clawdao 龙虾岛 / DDN 区块链 / Codex 训练营
 
 【一图二用设计原则】
 - 文章封面 (900×500) 必须支持从中心裁剪出 1:1 分享图 (500×500)
@@ -21,7 +21,7 @@ BRAND_NAME = "AI深度学堂"
 BRAND_EN = "AI · DEEP · ACADEMY"
 SUBTITLE = "为科技创业者打造的企业级 AI 认知升级阵地"
 MOTTO = "ClawDao 重塑企业 · 区块链重塑信任 · 觉知重塑心智"
-PRODUCTS = ["觉知岛 SaaS", "Clawdao 龙虾岛", "DDN 区块链", "Codex 训练营"]
+PRODUCTS = ["亿检链 SaaS", "Clawdao 龙虾岛", "DDN 区块链", "Codex 训练营"]
 
 # 调色板
 BG_DEEP   = (5, 7, 22)
@@ -255,7 +255,7 @@ def make_banner():
 
     # 副标题
     sub_f = _font(18)
-    sub = "AI · 区块链 · 觉知岛 · 一站式企业认知升级"
+    sub = "AI · 区块链 · 亿检链 · 一站式企业认知升级"
     sx, sw = _text_xy_centered(sub, sub_f, W)
     draw.text((sx, 198), sub, fill=(*GOLD_LIGHT, 230), font=sub_f)
 

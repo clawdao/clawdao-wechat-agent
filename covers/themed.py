@@ -9,9 +9,9 @@
 - 4x 超采样 + 多层渐变 + 辉光文字 + 粒子系统
 
 输出：
-  - output/觉知岛_文章封面_900x500.png
-  - output/觉知岛_头图横幅_900x383.png
-  - output/觉知岛_分享小图_500x500.png
+  - output/亿检链_文章封面_900x500.png
+  - output/亿检链_头图横幅_900x383.png
+  - output/亿检链_分享小图_500x500.png
   - output/inline_三大陷阱_concept.png
   - output/inline_三步法_steps.png
   - output/inline_金句_quote.png
@@ -30,7 +30,7 @@ SCALE = 4
 OUTPUT_DIR = Path("/Users/imfly/Documents/projects/Codex-Agents-运营/公众号自动发布智能体/output")
 
 # ===== 品牌常量 =====
-BRAND = "觉知岛"
+BRAND = "亿检链"
 MOTTO = "知人者智，自知者明"
 
 # ===== 配色方案：「由繁入简」专属 =====
@@ -294,7 +294,7 @@ def generate_cover_set():
     
     # ── 保存文章封面 ──
     cover_final = _resize(img, sizes["cover"])
-    cover_path = OUTPUT_DIR / "觉知岛_文章封面_900x500.png"
+    cover_path = OUTPUT_DIR / "亿检链_文章封面_900x500.png"
     cover_final.convert("RGB").save(str(cover_path), "PNG", optimize=True)
     print(f"✅ 文章封面: {cover_path} ({cover_path.stat().st_size // 1024}KB)")
     
@@ -303,14 +303,14 @@ def generate_cover_set():
     crop_top = (H - banner_h) // 2
     banner_img = img.crop((0, crop_top * s, W * s, (crop_top + banner_h) * s))
     banner_final = _resize(banner_img, (900, 383))
-    banner_path = OUTPUT_DIR / "觉知岛_头图横幅_900x383.png"
+    banner_path = OUTPUT_DIR / "亿检链_头图横幅_900x383.png"
     banner_final.convert("RGB").save(str(banner_path), "PNG", optimize=True)
     print(f"✅ 头图横幅: {banner_path} ({banner_path.stat().st_size // 1024}KB)")
     
     # ── 分享小图 500×500 ──
     square = img.crop((200 * s, 0, 700 * s, 500 * s))
     square_final = _resize(square, (500, 500))
-    square_path = OUTPUT_DIR / "觉知岛_分享小图_500x500.png"
+    square_path = OUTPUT_DIR / "亿检链_分享小图_500x500.png"
     square_final.convert("RGB").save(str(square_path), "PNG", optimize=True)
     print(f"✅ 分享小图: {square_path} ({square_path.stat().st_size // 1024}KB)")
     
@@ -540,7 +540,7 @@ if __name__ == "__main__":
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
     print(f"\n{'='*50}")
-    print("🎨 觉知岛 ·「SaaS越买越焦虑」专属视觉设计引擎")
+    print("🎨 亿检链 ·「SaaS越买越焦虑」专属视觉设计引擎")
     print(f"{'='*50}")
     print(f"超采样倍率: {SCALE}x")
     print(f"设计概念: 由繁入简 (从SaaS焦虑到归一清明)")
@@ -562,9 +562,9 @@ if __name__ == "__main__":
     print("✅ 全部图片生成完毕！")
     print(f"{'='*50}")
     print(f"📦 输出目录: {OUTPUT_DIR}")
-    print(f"   文章封面: 觉知岛_文章封面_900x500.png")
-    print(f"   头图横幅: 觉知岛_头图横幅_900x383.png")
-    print(f"   分享小图: 觉知岛_分享小图_500x500.png")
+    print(f"   文章封面: 亿检链_文章封面_900x500.png")
+    print(f"   头图横幅: 亿检链_头图横幅_900x383.png")
+    print(f"   分享小图: 亿检链_分享小图_500x500.png")
     print(f"   概念插图: inline_三大陷阱_concept.png")
     print(f"   步骤插图: inline_三步法_steps.png")
     print(f"   金句插图: inline_金句_quote.png")

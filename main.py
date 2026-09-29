@@ -180,7 +180,7 @@ def main():
                 if mi.enabled:
                     provider_used = "minimax_image"
                     # 1. 生成封面图
-                    cover_prompt = f"公众号封面图，主题：{title}，现代科技风格，觉知岛龙虾岛品牌，深紫蓝渐变 #1a1a2e，#e94560 品牌色，高品质"
+                    cover_prompt = f"公众号封面图，主题：{title}，现代科技风格，亿检链龙虾岛品牌，深紫蓝渐变 #1a1a2e，#e94560 品牌色，高品质"
                     print("  🖼️ 生成封面图...")
                     cover_path = mi.generate(cover_prompt, "outputs/cover.png", 1024, 1024)
                     # 2. 从文章提取内容生成 3 张配图
@@ -197,7 +197,7 @@ def main():
                             sub_title = f"{title[:12]} - {style}"
                         if not args.no_images:
                             print(f"  🎨 生成配图 {i+1}/3...")
-                            inline_p = f"公众号配图，主题：{title}，{sub_title}，觉知岛龙虾岛品牌，现代科技感，高品质"
+                            inline_p = f"公众号配图，主题：{title}，{sub_title}，亿检链龙虾岛品牌，现代科技感，高品质"
                             ip = mi.generate(inline_p, f"outputs/inline_{i+1}.png", 1024, 1024)
                             if ip:
                                 inline_paths.append(ip)

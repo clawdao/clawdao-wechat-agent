@@ -44,7 +44,7 @@ class WeChatPublisher:
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "觉知岛",
+                "name": "亿检链",
                 "description": "东方智慧 + 现代科技，AI时代的认知升级平台"
             },
             "datePublished": today,
@@ -108,7 +108,7 @@ class WeChatPublisher:
             if brand_url:
                 brand_html = (
                     f'<section style="margin: 0 0 12px 0; text-align: center;">'
-                    f'<img src="{brand_url}" alt="觉知岛" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
+                    f'<img src="{brand_url}" alt="亿检链" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
                     f'</section>'
                 )
                 html = brand_html + html
@@ -203,7 +203,7 @@ class WeChatPublisher:
 
         # 品牌色
         C_PRIMARY = "#1a1a2e"     # 深蓝黑
-        C_ACCENT = "#c8a84e"      # 觉知岛金色
+        C_ACCENT = "#c8a84e"      # 亿检链金色
         C_GOLD = "#b8963e"        # 深金
         C_ACCENT_LIGHT = "#f5f0e8"  # 金色浅底
         C_BG_GOLD = "linear-gradient(135deg, #c8a84e 0%, #a07d30 100%)"
@@ -359,7 +359,7 @@ class WeChatPublisher:
                     ft = ImageFont.truetype(p, 28)
                     break
             if ft:
-                draw.text((W//2 - 140, 140), "◆ 觉知岛", fill=(*accent, 180), font=ft)
+                draw.text((W//2 - 140, 140), "◆ 亿检链", fill=(*accent, 180), font=ft)
                 ft2 = ImageFont.truetype(font_paths[0] if Path(font_paths[0]).exists() else font_paths[1], 20)
                 draw.text((W//2 - 160, 250), "一人组织 · AI 驱动 · 顺道而为", fill=(*accent, 100), font=ft2)
 

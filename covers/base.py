@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, '/Users/imfly/Documents/公众号')
 from config import get_cover_config, get_output_dir
 
-# ===== 觉知岛 品牌配色方案 =====
+# ===== 亿检链 品牌配色方案 =====
 BRAND_THEMES = [
     # 玄墨金 - 深邃智慧（旗舰版）
     {"bg": (2, 4, 10), "accent": (220, 185, 60), "accent_soft": (140, 115, 50),
@@ -26,7 +26,7 @@ BRAND_THEMES = [
      "glow": (235, 185, 65, 18), "aura": (180, 130, 50, 7)},
 ]
 
-BRAND_NAME = "觉知岛"
+BRAND_NAME = "亿检链"
 TAGLINE = "AI · 区块链 · 认知升级"
 MOTTO = "知人者智，自知者明"
 VALUES = "明道 · 取势 · 优术 · 利他"

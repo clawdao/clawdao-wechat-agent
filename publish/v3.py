@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-觉知岛 · 公众号发布脚本 v3
+亿检链 · 公众号发布脚本 v3
 
 结构：
   [品牌头图] ← brand_header.png（统一品牌宣传）
@@ -67,7 +67,7 @@ def upload_image(token, path, is_inline=False):
 
 def main():
     print("=" * 60)
-    print("  觉知岛 · 公众号发布 v3")
+    print("  亿检链 · 公众号发布 v3")
     print("  3篇爆款文章")
     print("  品牌头图 + 标题背景框 + 文中插图 + 独立封面")
     print("=" * 60)
@@ -112,7 +112,7 @@ def main():
         # 4. 构建最终HTML：品牌头图 + 正文
         brand_section = (
             f'<section style="margin: 0 0 5px 0; text-align: center;">'
-            f'<img src="{brand_url}" alt="觉知岛" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
+            f'<img src="{brand_url}" alt="亿检链" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
             f'</section>'
         )
         

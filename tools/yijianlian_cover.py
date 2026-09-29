@@ -283,7 +283,7 @@ def make_cover_900x500():
     # 10) 文字（全部约束在中央 500×500 安全区）
     _draw_brand_text(
         draw, W, H,
-        title_main="觉知岛正式升级",
+        title_main="亿检链正式升级",
         title_sub=SUBTITLE,
         cta=CTA,
     )
@@ -342,7 +342,7 @@ def make_banner_900x383():
 
     # 主标题（一行）
     f_title = _font(34, bold=True)
-    title = "觉知岛 → 亿检链"
+    title = "亿检链 → 亿检链"
     bb_t = f_title.getbbox(title)
     tw = bb_t[2] - bb_t[0]
     tx = SAFE_CX - tw // 2

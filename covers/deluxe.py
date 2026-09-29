@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-觉知岛 公众号封面 & 插图 — 高精度优雅设计引擎
+亿检链 公众号封面 & 插图 — 高精度优雅设计引擎
 ================================================
 核心优化：
   1. 2x 超采样 → 抗锯齿 + 边缘平滑
@@ -21,7 +21,7 @@ import sys
 random.seed(42)
 
 # ===== 品牌常量 =====
-BRAND = "觉知岛"
+BRAND = "亿检链"
 MOTTO = "知人者智，自知者明"
 SCALE = 2  # 超采样倍率
 
@@ -284,14 +284,14 @@ def generate_deluxe_cover(title_str, topic=""):
     
     # 生成头图横幅 900×383（从顶部裁剪）
     banner = final.crop((0, 0, 900, 383))
-    banner_path = out_dir / f"觉知岛_头图横幅_900x383.png"
+    banner_path = out_dir / f"亿检链_头图横幅_900x383.png"
     banner.convert("RGB").save(str(banner_path), "PNG", optimize=True)
     print(f"✅ 头图横幅 900×383: {banner_path}")
     
     # 生成分享小图 500×500（中心裁剪）
     square = final.crop((200, 0, 700, 500))
     square_resized = square.resize((500, 500), Image.LANCZOS)
-    share_path = out_dir / f"觉知岛_分享小图_500x500.png"
+    share_path = out_dir / f"亿检链_分享小图_500x500.png"
     square_resized.convert("RGB").save(str(share_path), "PNG", optimize=True)
     print(f"✅ 分享小图 500×500: {share_path}")
     

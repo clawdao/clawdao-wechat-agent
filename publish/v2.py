@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-觉知岛公众号 - 优化发布脚本 v2
+亿检链公众号 - 优化发布脚本 v2
 1. 品牌头图作为统一品牌宣传图置于文章顶部（不含标题信息）
 2. 个性化封面图作为 thumb_media_id
 3. 每篇文章至少3张文中插图（diagram/info/concept）
@@ -79,8 +79,8 @@ def make_article_html(brand_header_url, inline_urls, md_content, token):
     # 品牌头图HTML块（放在文章顶部，不含标题信息，统一品牌宣传）
     brand_section = (
         f'<section style="margin: 0 0 20px 0; text-align: center;">'
-        f'<img src="{brand_header_url}" alt="觉知岛" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
-        f'<p style="margin: 6px 0 0 0; font-size: 13px; color: #999;">品牌·觉知岛</p>'
+        f'<img src="{brand_header_url}" alt="亿检链" style="width: 100%; max-width: 100%; border-radius: 12px;" />'
+        f'<p style="margin: 6px 0 0 0; font-size: 13px; color: #999;">品牌·亿检链</p>'
         f'</section>'
     )
     
@@ -118,7 +118,7 @@ def make_article_html(brand_header_url, inline_urls, md_content, token):
 
 def main():
     print("=" * 60)
-    print("  觉知岛 · 公众号优化发布 v2")
+    print("  亿检链 · 公众号优化发布 v2")
     print("  3篇爆款文章 + 品牌头图 + 个性化封面 + 文中插图")
     print("=" * 60)
     

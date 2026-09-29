@@ -17,7 +17,7 @@ from volcenginesdkcore.signv4 import SignerV4
 
 
 # ====== 品牌常量（与 cover_generator.py 一致） ======
-BRAND_NAME = "觉知岛"
+BRAND_NAME = "亿检链"
 TAGLINE = "AI · 区块链 · 认知升级"
 MOTTO = "知人者智，自知者明"
 VALUES = "明道 · 取势 · 优术 · 利他"
@@ -277,7 +277,7 @@ class SeedreamGenerator:
     # ---- 文字叠加（复用 cover_generator 样式）----
 
     def _draw_cover_text(self, draw, w, h, title):
-        """在Seedream背景上叠加觉知岛封面文字
+        """在Seedream背景上叠加亿检链封面文字
         所有核心文字约束在中央 500×500 安全区（x:200~700）
         确保服务号列表、转发卡片 1:1 裁剪后文字完整可见"""
         SAFE_LEFT, SAFE_RIGHT = 200, 700

@@ -1,4 +1,4 @@
-"""批量发布三篇觉知岛公众号文章（含品牌头图、封面图、配图）"""
+"""批量发布三篇亿检链公众号文章（含品牌头图、封面图、配图）"""
 import sys, os, re, time, json, requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from core.publisher import WeChatPublisher

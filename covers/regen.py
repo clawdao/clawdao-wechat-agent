@@ -15,7 +15,7 @@ from config import load_config, get_seedream_config
 from volcenginesdkcore.signv4 import SignerV4
 
 # ====== 品牌常量 ======
-BRAND_NAME = "觉知岛"
+BRAND_NAME = "亿检链"
 TAGLINE = "AI · 区块链 · 认知升级"
 MOTTO = "知人者智，自知者明"
 VALUES = "明道 · 取势 · 优术 · 利他"
@@ -128,7 +128,7 @@ class SeedreamHighQuality:
         """高质量封面 900x500"""
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         safe_name = re.sub(r'[^\w\-]', '_', title[:25])
-        path = OUTPUT_DIR / f"觉知岛_文章封面_900x500.png"
+        path = OUTPUT_DIR / f"亿检链_文章封面_900x500.png"
         
         # === 改进的 Seedream 提示词：更具体、更艺术 ===
         prompt = (
@@ -346,7 +346,7 @@ class SeedreamHighQuality:
     # ====== 分享小图 ======
     def generate_share_square(self, cover_path):
         """从封面裁剪 1:1 中心分享图"""
-        out_path = OUTPUT_DIR / "觉知岛_分享小图_500x500.png"
+        out_path = OUTPUT_DIR / "亿检链_分享小图_500x500.png"
         img = Image.open(cover_path)
         # 宽900高500，中心500x500 = crop(200, 0, 700, 500)
         square = img.crop((200, 0, 700, 500))
@@ -390,7 +390,7 @@ def update_article(inline_paths):
 # ====== 主流程 ======
 def main():
     print("=" * 55)
-    print("  🌟 觉知岛 · 高质量图像重生成")
+    print("  🌟 亿检链 · 高质量图像重生成")
     print("=" * 55)
     
     sg = SeedreamHighQuality()

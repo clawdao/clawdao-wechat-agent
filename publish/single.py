@@ -8,11 +8,11 @@ from core.publisher import WeChatPublisher
 from pathlib import Path
 
 ART_PATH = Path(__file__).parent / "output" / "05-从用软件到长软件_配图版.md"
-COV_PATH = Path(__file__).parent / "output" / "觉知岛_文章封面_900x500.png"
+COV_PATH = Path(__file__).parent / "output" / "亿检链_文章封面_900x500.png"
 
 def main():
     print("=" * 55)
-    print("  觉知岛 · 微信发布")
+    print("  亿检链 · 微信发布")
     print("=" * 55)
     
     if not ART_PATH.exists():

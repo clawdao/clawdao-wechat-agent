@@ -1,4 +1,4 @@
-"""批量发布三篇觉知岛公众号文章到微信草稿箱"""
+"""批量发布三篇亿检链公众号文章到微信草稿箱"""
 import sys, os, re, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from core.publisher import WeChatPublisher

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-觉知岛 - 标题背景框图片生成器
+亿检链 - 标题背景框图片生成器
 生成独立的标题背景框图片（品牌配色+文章标题）
 用于放在品牌头图和正文之间
 """
@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 
 # ===== 品牌配色方案 =====
-BRAND_NAME = "觉知岛"
+BRAND_NAME = "亿检链"
 MOTTO = "知人者智，自知者明"
 VALUES = "明道 · 取势 · 优术 · 利他"
 TAGLINE = "AI · 区块链 · 认知升级"
@@ -124,7 +124,7 @@ def generate_title_banner(title, output_path):
         # 主文字
         draw.text((tx, y), line, fill=(*theme["text"], 250), font=ft)
     
-    # === 右下角觉知岛标识 ===
+    # === 右下角亿检链标识 ===
     f_brand = _font(14)
     brand_x = W - 140
     brand_y = H - 32

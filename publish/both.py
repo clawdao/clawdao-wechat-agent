@@ -48,7 +48,7 @@ def publish_article(article_file, cover_name, article_title):
 
 if __name__ == "__main__":
     print(f"\n{'='*55}")
-    print("🚀 觉知岛 · 公众号文章批量发布")
+    print("🚀 亿检链 · 公众号文章批量发布")
     print(f"{'='*55}")
     print(f"输出目录: {OUTPUT_DIR}")
     print(f"Python: {sys.executable}")
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # ===== 文章1：「减少依赖，是 2026 年最被低估的竞争力」 =====
     r1 = publish_article(
         article_file="article_减少依赖_2026.md",
-        cover_name="觉知岛_减少依赖_文章封面_900x500.png",
+        cover_name="亿检链_减少依赖_文章封面_900x500.png",
         article_title="减少依赖，是 2026 年最被低估的竞争力"
     )
     results.append(("减少依赖，是 2026 年最被低估的竞争力", r1))
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # ===== 文章2：「SaaS 越买越焦虑？少则得，多则惑」 =====
     r2 = publish_article(
         article_file="article_SaaS越买越焦虑.md",
-        cover_name="觉知岛_SaaS越买越焦虑_文章封面_900x500.png",
+        cover_name="亿检链_SaaS越买越焦虑_文章封面_900x500.png",
         article_title="SaaS 越买越焦虑？少则得，多则惑"
     )
     results.append(("SaaS 越买越焦虑？少则得，多则惑", r2))

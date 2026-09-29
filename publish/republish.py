@@ -61,7 +61,7 @@ def embed_image_marker(md_text, topic, idx):
             break
     
     if ft:
-        draw.text((W//2-80, H//2-30), "◆ 觉知岛", fill=(*accent, 160), font=ft)
+        draw.text((W//2-80, H//2-30), "◆ 亿检链", fill=(*accent, 160), font=ft)
         ft2 = ImageFont.truetype(font_paths[0] if Path(font_paths[0]).exists() else font_paths[1], 18)
         draw.text((W//2-100, H//2+20), "一人组织 · 顺道而为", fill=(*accent, 90), font=ft2)
         ft3 = ImageFont.truetype(font_paths[0] if Path(font_paths[0]).exists() else font_paths[1], 14)
