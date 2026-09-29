@@ -36,9 +36,14 @@
   "cover": {
     "width": 900,
     "height": 383,
-    "bg_color": "#1a1a2e",
+    "bg_color": "#0a2e7a",
     "text_color": "#ffffff",
-    "accent_color": "#e94560"
+    "accent_color": "#f24c3a",
+    "brand_name": "亿检链",
+    "brand_en": "LIMSCHAIN",
+    "parent_brand": "利姆斯科技旗下品牌",
+    "logo_path": "images/亿检链_头图横幅_官方_1600x640.png",
+    "source_header_image": "images/亿检链_头图横幅_官方_1600x640.png"
   },
   "output": {
     "dir": "output",

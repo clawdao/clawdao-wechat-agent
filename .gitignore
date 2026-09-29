@@ -24,3 +24,4 @@ output/*.md
 output/*.html
 output/inline_*/
 outputs
+.clawdao-uploads/
