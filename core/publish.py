@@ -42,10 +42,12 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 from core.publisher import WeChatPublisher
 from core.style_renderer import StyleRenderer, list_styles
+from brand_profile import brand_assets, author, wechat
 
 
-# 固定品牌头图默认路径（项目内 images/ 目录里的横幅）
-DEFAULT_BRAND_HEADER = PROJECT_DIR / "images" / "亿检链_头图横幅_900x383.png"
+# 品牌头图默认路径（从 brand_profile.yml 读取，运营者可覆盖）
+_DEFAULT_BRAND_HEADER_REL = brand_assets().get("brand_header", "images/亿检链_头图横幅_900x383.png")
+DEFAULT_BRAND_HEADER = PROJECT_DIR / _DEFAULT_BRAND_HEADER_REL
 
 # 品牌头图缓存：复用 media_id 避免每次重新上传
 BRAND_HEADER_CACHE_PATH = PROJECT_DIR / "outputs" / ".brand_header_cache.json"
@@ -263,7 +265,7 @@ def _delete_material(token: str, media_id: str) -> bool:
 def publish_with_style(
     title: str,
     md_text: str,
-    style_name: str = "tech_blue",
+    style_name: str = None,  # 默认从 brand_profile.yml 读取
     cover_image_path: str = None,
     brand_header_path: str = None,
     delete_old_media_id: str = None,
@@ -275,9 +277,9 @@ def publish_with_style(
     参数：
         title: 文章标题（≤ 64 字）
         md_text: 完整 markdown（含 # 标题、## 小标题、> 引用、---、**加粗**、![alt](path)）
-        style_name: 风格名（默认 tech_blue）
+        style_name: 风格名（默认从 brand_profile.yml 读取）
         cover_image_path: 封面图本地路径（thumb_media_id，推送顶部大图）
-        brand_header_path: 品牌头图本地路径（不传则用项目默认 images/亿检链_头图横幅_900x383.png）
+        brand_header_path: 品牌头图本地路径（不传则从 brand_profile.yml 读取）
         delete_old_media_id: 要删除的旧草稿 media_id（用于覆盖发布）
         delete_old_cover_media_id: 顺手清理旧封面图（永久素材 media_id）
         delete_old_brand_media_id: 顺手清理旧品牌头图（永久素材 media_id，缓存变更时才需要）
@@ -290,6 +292,10 @@ def publish_with_style(
           - inline_urls: 本次上传的内联图片 URL 列表（无法主动清理）
         或 None（失败）
     """
+    # 默认风格从 brand_profile.yml 读取
+    if style_name is None:
+        style_name = wechat().get("default_style", "warm_gold")
+
     publisher = WeChatPublisher()
     token = publisher._get_access_token()
     if not token:
@@ -363,7 +369,7 @@ def publish_with_style(
     # 7. 推送到草稿箱
     article = {
         "title": title,
-        "author": "顺道大叔",
+        "author": author().get("name", "顺道大叔"),
         "content": final_html,
         "content_source_url": "",
         "digest": digest,
@@ -402,7 +408,7 @@ if __name__ == "__main__":
     import argparse
 
     p = argparse.ArgumentParser(description="按风格发布 markdown 到公众号草稿箱")
-    p.add_argument("--style", default="tech_blue", help="风格名（默认 tech_blue）")
+    p.add_argument("--style", default=wechat().get("default_style", "warm_gold"), help="风格名（默认从 brand_profile.yml 读取）")
     p.add_argument("--list-styles", action="store_true", help="列出所有风格")
     p.add_argument("--title", help="文章标题")
     p.add_argument("--in", dest="input", help="输入 markdown 路径")
