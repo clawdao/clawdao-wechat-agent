@@ -39,10 +39,10 @@ cp config.example.json config.json
 #### 姿势 A：用内置风格发布
 ```bash
 # 列已注册风格
-python3 core/publish_v2.py --list-styles
+python3 core/publish.py --list-styles
 
 # 用 warm_gold 风格发布
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "我的文章标题" \
   --in content.md \
@@ -60,7 +60,7 @@ python3 tools/style_learner.py \
   --description "我的风格"
 
 # 第 2 步：用学到的风格发布
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style my_style \
   --title "..." \
   --in content.md
@@ -75,7 +75,7 @@ python3 core/style_renderer.py \
   --out article.html
 
 # 第 2 步：手工检查 article.html 后再发布
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "..." \
   --in content.md
@@ -99,7 +99,7 @@ clawdao-wechat-agent/
 │
 ├── 🔧 core/
 │   ├── style_renderer.py               ← 🆕 markdown + 风格 → HTML（唯一入口）
-│   ├── publish_v2.py                   ← 🆕 风格化发布器（支持内联图片 + 品牌头图）
+│   ├── publish.py                       ← 🆕 风格化发布器（支持内联图片 + 品牌头图）
 │   ├── publisher.py                    ← 旧版发布器（保留兼容）
 │   └── article.py                      ← AI 写文
 │
@@ -208,7 +208,7 @@ python3 core/style_renderer.py \
 open article_preview.html  # 在浏览器看手机端预览
 
 # Step 4: 一键发布到微信草稿箱
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "我的文章标题" \
   --in article.md \
@@ -217,7 +217,7 @@ python3 core/publish_v2.py \
 # 输出：media_id（请到公众号后台草稿箱查看）
 
 # Step 5: 重复发布时，先删除旧的
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "我的文章标题" \
   --in article.md \
@@ -246,7 +246,7 @@ python3 core/publish_v2.py \
 ### Q4：风格变了
 
 **原因**：旧版 `core/publisher._markdown_to_html` 写死金色样式，绕过了 AGENTS.md 规范。
-**解决**：所有发布走 `core/publish_v2.py`，它直接接收 `StyleRenderer` 渲染的 HTML，不再二次转换。
+**解决**：所有发布走 `core/publish.py`，它直接接收 `StyleRenderer` 渲染的 HTML，不再二次转换。
 
 ---
 
@@ -270,7 +270,7 @@ ls styles/learned/test_warm_gold.yml
 
 # 3. 验证发布（不需要真的发布）
 python3 -c "
-from core.publish_v2 import list_styles
+from core.publish import list_styles
 print(list_styles())
 "
 ```
@@ -280,7 +280,7 @@ print(list_styles())
 ## 📚 历史版本
 
 - **v1**（旧）：`core/publisher.save_as_draft` —— 直接 markdown，内部 `_markdown_to_html` 写死金色样式
-- **v2**（当前）：`core/publish_v2.publish_with_style` —— 接受风格名，调用 `StyleRenderer`，处理内联图片 + 品牌头图
+- **v2**（当前）：`core/publish.publish_with_style` —— 接受风格名，调用 `StyleRenderer`，处理内联图片 + 品牌头图
 - 旧版 `core/publisher.py` 保留作为兼容入口
 
 ---
@@ -288,7 +288,7 @@ print(list_styles())
 ## 📝 开发规范
 
 1. **风格 ≠ 流程**：所有样式集中在 `styles/*.yml`，不在代码里硬编码
-2. **单一入口**：markdown → HTML 走 `core/style_renderer.py`；HTML → 微信走 `core/publish_v2.py`
+2. **单一入口**：markdown → HTML 走 `core/style_renderer.py`；HTML → 微信走 `core/publish.py`
 3. **可学习**：从 URL/图片提取风格，避免手工调样式
 4. **不破坏旧规则**：AGENTS.md 永久约束（正文不放封面图、500×500 安全区等）仍生效
 

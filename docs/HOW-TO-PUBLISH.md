@@ -30,7 +30,7 @@
 使用默认 images/亿检链_头图横幅_900x383.png（自动缓存复用，不要每次重传）
 
 【执行步骤】
-1. 调用 core/publish_v2.py 完成发布
+1. 调用 core/publish.py 完成发布
 2. 记下返回的 3 个 media_id（草稿、封面、品牌头图）
 3. 在 docs/HOW-TO-PUBLISH.md 末尾的「历次发布记录」追加一行
 4. 把这次用到的 3 个 ID 同步到下次发布时填入「清理旧资源」
@@ -44,7 +44,7 @@
 
 ```bash
 cd /Users/imfly/projects/Agents/clawdao-wechat-agent
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "你的文章标题" \
   --in path/to/article.md \
@@ -69,7 +69,7 @@ python3 core/publish_v2.py \
 
 ```bash
 cd /Users/imfly/projects/Agents/clawdao-wechat-agent
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "你的文章标题" \
   --in path/to/article.md \
@@ -133,7 +133,7 @@ python3 tools/yijianlian_cover.py \
 ### Step 3：发布
 
 ```bash
-python3 core/publish_v2.py \
+python3 core/publish.py \
   --style warm_gold \
   --title "标题（≤64字）" \
   --in outputs/your-article.md \
@@ -175,16 +175,16 @@ A：微信 API 有两类图片：
 
 ```bash
 for md in outputs/article-*.md; do
-  python3 core/publish_v2.py --style warm_gold --title "..." --in "$md" ...
+  python3 core/publish.py --style warm_gold --title "..." --in "$md" ...
 done
 ```
 
 ### Q5：我换风格怎么办？
 
 ```bash
-python3 core/publish_v2.py --list-styles  # 列出所有风格
+python3 core/publish.py --list-styles  # 列出所有风格
 # 选择一个，比如 warm_gold_v2
-python3 core/publish_v2.py --style warm_gold_v2 ...
+python3 core/publish.py --style warm_gold_v2 ...
 ```
 
 要学新风格：`python3 tools/style_learner.py --url <微信文章链接>`
@@ -197,4 +197,5 @@ python3 core/publish_v2.py --style warm_gold_v2 ...
 
 | 日期 | 标题 | 草稿 media_id | 封面图 media_id | 品牌头图 media_id | 状态 |
 |------|------|---------------|------------------|-------------------|------|
-| 2026-10-01 | 测试：publish_v2.1 端到端验证 | `bLecvU4Iq3PpzwzL_6k_RtTsRtLVLkRhjuOM97JyTGyB0mQFyBmTveSrOvwnXBb3` | `bLecvU4Iq3PpzwzL_6k_RtEpFn7nlb2f9Ij-rOWc4rKhIFhCBHbCXljRLRHXHmcC` | `bLecvU4Iq3PpzwzL_6k_RkQL8MUByavlt5UP_lQbuABMleJzGl1MYu8lu4xDWEx1` | ✅ |
+| 2026-10-01 | 测试：publish 端到端验证 | `bLecvU4Iq3PpzwzL_6k_RtTsRtLVLkRhjuOM97JyTGyB0mQFyBmTveSrOvwnXBb3` | `bLecvU4Iq3PpzwzL_6k_RtEpFn7nlb2f9Ij-rOWc4rKhIFhCBHbCXljRLRHXHmcC` | `bLecvU4Iq3PpzwzL_6k_RkQL8MUByavlt5UP_lQbuABMleJzGl1MYu8lu4xDWEx1` | ✅ |
+| 2026-10-01 | 如果软件没有天花板：ClawDao「项目即一等公民」设计哲学 | `bLecvU4Iq3PpzwzL_6k_Rlp0U0TXY8EBPOvP7aTL0X55fKjLJD3hOLINlVKiRvT6` | `bLecvU4Iq3PpzwzL_6k_Rg9fUUbqfNz_Qq_gJA7oBkmoHt3ypG4it9ty2cy0i6yA` | `bLecvU4Iq3PpzwzL_6k_Rv0lCbYgyf5DqUscyBSkR3jZlk60cu4PenWIizqcL19h` | ✅ |

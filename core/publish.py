@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-风格化发布器 v2：从 markdown + 风格 → 微信公众号草稿箱
+风格化发布器：从 markdown + 风格 → 微信公众号草稿箱
 
-> 改进（v2.1 — 2026-10-01）：
+> 特性：
 > 1. 内联图片处理：自动解析 ![alt](path)、上传到微信 CDN、替换为微信 URL
 > 2. 品牌头图插入：固定复用同一张 brand_header 图（缓存 media_id，不再每次重传）
 > 3. 正确的 digest：从 markdown 取纯文本，不用 HTML 头标签
 > 4. 风格化渲染：调用 core/style_renderer.StyleRenderer
 > 5. 旧素材清理：删除旧草稿时，主动 delete 关联的封面图 / 品牌头图（永久素材）
 
+> 版本：
+> - v1.0 (2026-10-01): 统一发布入口（原 core/publish_v2.py 重命名）；
+>   包含品牌头图缓存 + 永久素材清理 + 摘要从 markdown 提取
+
 用法：
-    from core.publish_v2 import publish_with_style
+    from core.publish import publish_with_style
     result = publish_with_style(
         title="...",
         md_text="...",
@@ -23,7 +27,7 @@
     )
 
     # CLI
-    python3 core/publish_v2.py --style warm_gold --title "..." \\
+    python3 core/publish.py --style warm_gold --title "..." \\
         --in content.md --cover cover.png \\
         --delete-old bLecvU4Iq3Pp... \\
         --delete-old-cover XXXXXXXXX \\

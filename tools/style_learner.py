@@ -260,4 +260,4 @@ if __name__ == "__main__":
     out_path.write_text(yaml, encoding="utf-8")
     print(f"\n✅ 风格已学到: {out_path}")
     print(f"   预览: python3 core/style_renderer.py --style {args.name} --in your.md")
-    print(f"   发布: python3 core/publish_v2.py --style {args.name} --title '...' --in your.md")
+    print(f"   发布: python3 core/publish.py --style {args.name} --title '...' --in your.md")
