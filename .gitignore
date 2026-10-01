@@ -18,19 +18,6 @@ venv/
 *.bak
 *.tmp
 
-# ── 产物 ──
-# outputs/ 下的直接子项默认忽略；靠下方白名单挑选需要入库的素材
-outputs/*
-# 例外：保留品牌素材（封面图/品牌头图/分享小图/共享插图）
-!outputs/亿检链_*.png
-!outputs/inline_*.png
-!outputs/illustration_*.png
-# 例外：保留已发布/已定稿的稿件 markdown
-!outputs/正式版_*.md
-!outputs/重建版_*.md
-!outputs/创意*.md
-# 例外：品牌头图上传缓存（用于跨次发布复用 media_id）
-!outputs/.brand_header_cache.json
-# 例外：渲染预览 HTML（保留最新一次便于对比，发布后清理）
-!outputs/*_preview.html
+# ── LLM 任务产物（每次发布都会重新生成，不需要入库） ──
+outputs/
 .clawdao-uploads/
