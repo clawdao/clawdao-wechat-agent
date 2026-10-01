@@ -1,0 +1,105 @@
+# =============================================================================
+# 温暖金色风格模板（Warm Gold）
+# =============================================================================
+# 来源：从微信公众号文章 https://mp.weixin.qq.com/s/YBnmY042Y39FobbhWI_92A 学习
+# 风格定位：东方智慧 + 现代科技，禅意克制，金色温暖
+# 适合：深度长文、思考类、哲学类、文化类、品牌故事
+# 学习时间：2026-09-30
+# =============================================================================
+
+meta:
+  name: warm_gold
+  display_name: "温暖金色"
+  source_url: "https://mp.weixin.qq.com/s/YBnmY042Y39FobbhWI_92A"
+  learned_at: "2026-09-30"
+  tags: ["东方", "禅意", "金色", "长文", "克制"]
+  mood: "东方智慧 · 克制高级 · 温暖有礼"
+
+# -----------------------------------------------------------------------------
+# 色板（brand palette）
+# -----------------------------------------------------------------------------
+palette:
+  primary: "#c8a84e"        # 主金色（标题装饰、强调、引用左边框）
+  primary_dark: "#a07d30"    # 深金（渐变终点）
+  primary_soft: "#f5f0e8"   # 浅金底（引用块背景）
+  text_primary: "#1a1a2e"   # 深蓝黑（标题、正文主色）
+  text_body: "#333333"      # 正文黑
+  text_quote: "#6b5b3e"     # 引用块文字（暖棕色）
+  text_muted: "#888888"     # 次要文字
+  accent_orange: "rgb(255,169,0)"  # 强调橙（用于极少数关键词）
+  divider: "#eee"           # 分隔线灰
+  bg_quote: "#f5f0e8"       # 引用块背景
+
+# -----------------------------------------------------------------------------
+# 组件 CSS（每个元素的内联样式片段）
+# 每个组件给出完整 style 字符串，渲染时直接嵌入
+# -----------------------------------------------------------------------------
+components:
+
+  h1:
+    # 一级标题：纯文字 + 金色短横线装饰，无渐变
+    container: 'margin: 0 0 20px 0; text-align: center;'
+    title:     'font-size: 18px; font-weight: 700; color: #1a1a2e; margin: 0; line-height: 1.6; letter-spacing: 0.5px;'
+    deco:      'width: 36px; height: 3px; background: #c8a84e; margin: 10px auto 0 auto; border-radius: 2px;'
+
+  h2:
+    # 小标题：左侧 4×20 金色竖条 + flex 布局
+    container: 'margin: 28px 0 14px 0;'
+    flex:      'display: flex; align-items: center;'
+    bar:       'width: 4px; height: 20px; background: #c8a84e; border-radius: 2px; margin-right: 10px;'
+    title:     'font-size: 17px; font-weight: 700; margin: 0; color: #1a1a2e; line-height: 1.5;'
+
+  h3:
+    # 三级标题（###）：略缩进、金色加粗
+    container: 'margin: 22px 0 10px 0;'
+    title:     'font-size: 15px; font-weight: 700; margin: 0; color: #1a1a2e;'
+
+  p:
+    # 正文段落
+    base:      'margin: 8px 0; font-size: 15px; line-height: 1.9; color: #333; letter-spacing: 0.5px;'
+
+  strong:
+    # 关键词加粗（品牌金色）
+    base:      'font-weight: bold; color: #c8a84e;'
+
+  blockquote:
+    # 引用块：浅金底 + 金色左竖条 + 圆角
+    container: 'background: #f5f0e8; border-left: 4px solid #c8a84e; margin: 16px 0; padding: 14px 18px; border-radius: 0 8px 8px 0;'
+    text:      'margin: 0; font-size: 14px; line-height: 1.8; color: #6b5b3e; font-style: normal;'
+
+  hr:
+    # 分隔线：三个金色 ✦ 居中
+    container: 'margin: 28px 0; text-align: center; color: #c8a84e; font-size: 14px; letter-spacing: 6px;'
+    content:   '✦ ✦ ✦'
+
+  spacer:
+    # 段落间空行
+    base:      'margin: 10px 0;'
+
+  img:
+    # 图片：圆角 10px
+    base:      'margin: 20px 0; text-align: center;'
+    img:       'width: 100%; max-width: 100%; border-radius: 10px;'
+
+  section:
+    # 全局包裹
+    base:      'padding: 0 5px;'
+
+# -----------------------------------------------------------------------------
+# 渲染规则
+# -----------------------------------------------------------------------------
+rendering:
+  # 哪些 markdown 元素需要特殊处理
+  special:
+    blockquote:      "preserve inner quoted blocks as one container"
+    strong_in_quote: "use gold color but lighter"
+    list_bullet:     "convert to ✓ or · prefix"
+  # 限制
+  limits:
+    max_blockquotes: 2      # 全文不超过 2 处
+    max_strong_per_p: 2     # 每段加粗不超过 2 处
+  # emoji/特殊字符
+  decoration:
+    separator: "✦ ✦ ✦"
+    check: "✓"
+    bullet: "·"

@@ -1,0 +1,97 @@
+# =============================================================================
+# 温暖金色风格模板
+# 来源：自动从参考文章学习（style_learner.py）
+# 学习时间：2026-09-30
+# =============================================================================
+
+meta:
+  name: warm_gold_v2
+  display_name: "温暖金色"
+  source_url: "auto-learned"
+  learned_at: "2026-09-30"
+  tags: ["自动学习", "warm_gold_v2"]
+  mood: "温暖金色"
+
+palette:
+  primary: "#c8a84e"
+  primary_dark: "#FF6146"
+  primary_soft: "#FFFFFF"
+  text_primary: "#1a1a2e"
+  text_body: "#333333"
+  text_quote: "#6b5b3e"
+  text_muted: "#888888"
+  bg_quote: "#FFFFFF"
+  divider: "#eee"
+
+components:
+
+  h1:
+    container: 'margin: 0 0 20px 0; text-align: center;'
+    title:     'font-size: 44px; font-weight: 700; color: #1a1a2e; margin: 0; line-height: 1.6; letter-spacing: 0.5px;'
+    deco:      'width: 36px; height: 3px; background: #c8a84e; margin: 10px auto 0 auto; border-radius: 2px;'
+
+  h2:
+    container: 'margin: 28px 0 14px 0;'
+    flex:      'display: flex; align-items: center;'
+    bar:       'width: 4px; height: 20px; background: #c8a84e; border-radius: 2px; margin-right: 10px;'
+    title:     'font-size: 18px; font-weight: 700; margin: 0; color: #1a1a2e; line-height: 1.5;'
+
+  h3:
+    container: 'margin: 22px 0 10px 0;'
+    title:     'font-size: 15px; font-weight: 700; margin: 0; color: #1a1a2e;'
+
+  p:
+    base:      'margin: 8px 0; font-size: 15px; line-height: 1.9; color: #333; letter-spacing: 0.5px;'
+
+  strong:
+    base:      'font-weight: bold; color: #c8a84e;'
+
+  blockquote:
+    container: 'background: #FFFFFF; border-left: 4px solid #c8a84e; margin: 16px 0; padding: 14px 18px; border-radius: 0 8px 8px 0;'
+    text:      'margin: 0; font-size: 14px; line-height: 1.8; color: #6b5b3e; font-style: normal;'
+
+  hr:
+    container: 'margin: 28px 0; text-align: center; color: #c8a84e; font-size: 14px; letter-spacing: 6px;'
+    content:   '✦ ✦ ✦'
+
+  spacer:
+    base:      'margin: 10px 0;'
+
+  img:
+    base:      'margin: 20px 0; text-align: center;'
+    img:       'width: 100%; max-width: 100%; border-radius: 10px;'
+
+  section:
+    base:      'padding: 0 5px;'
+
+rendering:
+  special:
+    blockquote:      "preserve inner strong tags"
+    strong_in_quote: "use primary color"
+    list_bullet:     "preserve original emoji or bullet"
+  limits:
+    max_blockquotes: 2
+    max_strong_per_p: 2
+  decoration:
+    separator: "✦ ✦ ✦"
+    check: "✓"
+    bullet: "·"
+
+# =============================================================================
+# 学习依据（人工可读，用于追溯风格来源）
+# =============================================================================
+learned_features:
+  colors_top5:
+    "#c8a84e": 160
+    "#FF6146": 137
+    "#FFFFFF": 129
+    "#3EB575": 126
+    "#31905D": 108
+  fonts_top5:
+    "15px": 287
+    "14px": 62
+    "17px": 27
+    "12px": 26
+    "10px": 8
+  decorations: []
+  border_lefts_sample: ['4px solid #c8a84e', '4px solid #c8a84e', '6px solid transparent']

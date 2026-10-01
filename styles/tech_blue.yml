@@ -1,0 +1,84 @@
+# =============================================================================
+# 亿检链默认风格：科技蓝渐变（Tech Blue Gradient）
+# =============================================================================
+# 来源：AGENTS.md（公众号项目排版规范）
+# 风格定位：东方智慧 + 现代科技，科技蓝渐变，年轻专业
+# 适合：技术文章、AI 趋势、品牌升级类
+# 维护者：亿检链项目组
+# =============================================================================
+
+meta:
+  name: tech_blue
+  display_name: "科技蓝渐变（亿检链默认）"
+  source_url: "AGENTS.md"
+  learned_at: "2026-09-30"
+  tags: ["科技", "AI", "亿检链", "蓝紫渐变", "现代"]
+  mood: "现代科技 · 专业克制 · 高级感"
+
+palette:
+  primary: "#667eea"         # 主蓝紫渐变起点
+  primary_dark: "#764ba2"    # 渐变终点
+  primary_soft: "#667eea22"  # 透明蓝（小标题背景）
+  primary_soft_end: "#764ba222"
+  text_primary: "#333333"    # 主文字
+  text_quote: "#555555"      # 引用文字
+  text_muted: "#888888"
+  bg_quote: "#f8f9fa"         # 引用块背景
+  accent_red: "#e94560"      # 品牌强调红
+  divider: "#eee"
+
+components:
+
+  h1:
+    # 紫蓝渐变背景条 + 白字
+    container: 'margin: 0 0 25px 0;'
+    title:     'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 30px 20px; text-align: center; color: #ffffff; font-size: 20px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.2);'
+
+  h2:
+    # 浅蓝紫渐变 + 4px 蓝左边框
+    container: 'margin: 25px 0 12px 0;'
+    title:     'background: linear-gradient(90deg, #667eea22, #764ba222); border-left: 4px solid #667eea; border-radius: 0 6px 6px 0; padding: 10px 15px; font-size: 16px; font-weight: bold; color: #333;'
+
+  h3:
+    # 三级标题：缩进 + 加粗
+    container: 'margin: 22px 0 10px 0;'
+    title:     'font-size: 15px; font-weight: 700; color: #333; padding-left: 10px; border-left: 2px solid #667eea;'
+
+  p:
+    base:      'font-size: 15px; line-height: 1.9; color: #333; margin: 8px 0;'
+
+  strong:
+    # 品牌强调红
+    base:      'font-weight: bold; color: #e94560;'
+
+  blockquote:
+    container: 'background: #f8f9fa; border-left: 4px solid #e94560; border-radius: 0 8px 8px 0; padding: 12px 18px; color: #555; font-size: 14px; margin: 12px 0;'
+    text:      ''
+
+  hr:
+    container: 'margin: 25px 0;'
+    content:   ''  # 用 <hr> 标签
+    style:     'border: none; border-top: 1px solid #eee; margin: 25px 0;'
+
+  spacer:
+    base:      'margin: 12px 0;'
+
+  img:
+    base:      'text-align: center; margin: 0 0 20px 0;'
+    img:       'max-width: 100%; width: 640px; height: auto; border-radius: 8px; display: block; margin: 0 auto;'
+
+  section:
+    base:      'padding: 0 5px;'
+
+rendering:
+  special:
+    blockquote:      "preserve inner strong tags with brand red"
+    strong_in_quote: "use brand red"
+    list_bullet:     "preserve original emoji or • "
+  limits:
+    max_blockquotes: 2
+    max_strong_per_p: 2
+  decoration:
+    separator: ""  # 用 <hr> 而非字符
+    check: "✓"
+    bullet: "·"

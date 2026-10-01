@@ -19,9 +19,12 @@ venv/
 *.tmp
 
 # ── 产物 ──
-output/*.png
-output/*.md
-output/*.html
-output/inline_*/
-outputs
+output/*
+!output/.gitkeep
+outputs/*
+# 例外：保留品牌素材（封面图/品牌头图/分享小图/共享插图）
+!outputs/亿检链_*.png
+!outputs/inline_*.png
+# 例外：品牌头图上传缓存
+!outputs/.brand_header_cache.json
 .clawdao-uploads/
